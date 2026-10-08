@@ -1,0 +1,15 @@
+# Secrets / large binaries
+*.apk
+*.zip
+mhl.conf
+*.conf
+
+# Build outputs
+*.keystore
+unsigned.apk
+aligned.apk
+*-signed.apk
+
+# OS junk
+.DS_Store
+__MACOSX/

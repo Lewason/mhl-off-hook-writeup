@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="37" android:compileSdkVersionCodename="17" package="com.mobilehackinglab.dialer" platformBuildVersionCode="37" platformBuildVersionName="17">
+    <permission android:name="com.mobilehackinglab.dialer.permission.MANAGE_PLUGINS" android:protectionLevel="signature"/>
+    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <application android:allowBackup="false" android:appComponentFactory=".EffectFactory" android:extractNativeLibs="false" android:icon="@mipmap/ic_mhl_launcher" android:label="Dialer" android:name="com.mobilehackinglab.dialer.DialerApplication" android:roundIcon="@mipmap/ic_mhl_launcher" android:theme="@style/Theme.Dialer">
+        <activity android:exported="true" android:name="com.mobilehackinglab.dialer.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:name="com.mobilehackinglab.dialer.ImportPluginActivity" android:permission="com.mobilehackinglab.dialer.permission.MANAGE_PLUGINS"/>
+        <activity android:exported="true" android:name="com.mobilehackinglab.dialer.ActivatePluginActivity" android:permission="com.mobilehackinglab.dialer.permission.MANAGE_PLUGINS"/>
+        <service android:exported="true" android:name="com.mobilehackinglab.dialer.CallEffectService" android:permission="android.permission.BIND_INCALL_SERVICE">
+            <intent-filter>
+                <action android:name="android.telecom.InCallService"/>
+            </intent-filter>
+            <meta-data android:name="android.telecom.IN_CALL_SERVICE_UI" android:value="true"/>
+            <meta-data android:name="android.telecom.CLASS_EXISTENCE_CHECK" android:value="true"/>
+        </service>
+    </application>
+</manifest>

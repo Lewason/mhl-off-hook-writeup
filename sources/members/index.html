@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Members Rewards</title>
+    <style>
+        body { font: 16px sans-serif; margin: 0; background: #f5f3ff; color: #201a3b; }
+        header { padding: 24px; background: #5b4bdb; color: white; }
+        main { padding: 24px; }
+        input, button { box-sizing: border-box; padding: 12px; margin: 4px 0; width: 100%; }
+        .card { background: white; border-radius: 12px; padding: 18px; margin-top: 16px; }
+    </style>
+</head>
+<body>
+<header><h1>Member Rewards</h1><p>Find your latest offers.</p></header>
+<main>
+    <form id="searchForm">
+        <input id="search" autocomplete="off" placeholder="Search rewards">
+        <button type="submit">Search</button>
+    </form>
+    <div class="card" id="results">Featured rewards appear here.</div>
+</main>
+<script>
+    const form = document.getElementById('searchForm');
+    const search = document.getElementById('search');
+    const results = document.getElementById('results');
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        // Intentionally vulnerable DOM-XSS sink for the lab.
+        results.innerHTML = 'Results for: ' + search.value;
+    });
+</script>
+</body>
+</html>
